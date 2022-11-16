@@ -82,7 +82,7 @@ void NQUEENS(){
 	int no=rand()%6;
 	int ar[6]={4,5,6,7,8,9};
 	int n=ar[no];
-	cout<<"\n\n\n\t\t   IN this game you have to find an arrangement of N queens on a chess board of "<<n<<" x "<<n<<" chess board, \n\t\t   such that no queen can attack any other queens on the board.\n\t\t   The chess queens can attack in any direction as horizontal, vertical, horizontal and diagonal way.\n\n";
+	cout<<"\n\n\n\t\t   IN this game you have to find an arrangement of N queens on a  "<<n<<" x "<<n<<" chess board, \n\t\t   such that no queen can attack any other queens on the board.\n\t\t   The chess queens can attack in any direction as horizontal, vertical, horizontal and diagonal way.\n\n";
 	cout<<"\t\t   -----------------------------------------------------------------------------------------------------------------------------\n";	
 	cout<<"\n\n\n";
 	int valnq;
@@ -235,7 +235,7 @@ int main()
     default :
     cout<<"\t\t\t\t\t    Not a great choice TRY AGAIN \n";
     }
-cout<<endl<<" Test done...";
+
     getch();
     return 0;
 }

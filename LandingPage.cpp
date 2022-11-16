@@ -235,7 +235,7 @@ int main()
     default :
     cout<<"\t\t\t\t\t    Not a great choice TRY AGAIN \n";
     }
-
+cout<<endl<<" Test done...";
     getch();
     return 0;
 }

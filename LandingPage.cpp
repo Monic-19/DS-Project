@@ -132,6 +132,158 @@ void NQUEENS(){
 //Hangman
 
 
+struct node {
+  char data;
+  struct node *next;
+}*head, *temp, *newnode, *head2, *temp2;
+
+struct node createhm(char s) {
+  newnode = (struct node *)malloc(sizeof(struct node));
+  newnode->data=s;
+  newnode->next=NULL;
+  if (head == NULL)
+    head=newnode;
+  else
+    temp->next = newnode;
+  temp=newnode;
+  return *newnode;
+}
+
+struct node createBlankLL(char s){
+  newnode = (struct node *)malloc(sizeof(struct node));
+  newnode->data=s;
+  newnode->next=NULL;
+  if (head2 == NULL)
+    head2=newnode;
+  else
+  	temp2->next = newnode;
+  	temp2=newnode;
+}
+
+void printhm(struct node *p) {
+  while (p != NULL) {
+    cout<<p->data<<" ";
+    p = p->next;
+  }
+}
+
+void drawhm(int i){	
+
+  if(i==4){
+  	cout<<"\t\t    _____ \n";
+  	cout<<"\t\t      |       \n";
+  	cout<<"\t\t      0       \n";
+  	cout<<"\t\t     /|\\     \n";
+  	cout<<"\t\t     / \\     \n";
+  }
+  else if(i==3){
+  	cout<<"\t\t    _____ \n";
+  	cout<<"\t\t      |       \n";
+  	cout<<"\t\t      0       \n";
+  	cout<<"\t\t     /|\\     \n";
+  }
+    else if(i==2){
+  	cout<<"\t\t    _____ \n";
+  	cout<<"\t\t      |       \n";
+  	cout<<"\t\t      0       \n";
+  }
+    else if(i==1){
+  	cout<<"\t\t    _____ \n";
+  	cout<<"\t\t      |       \n";
+  }
+    else if(i==0){
+  	cout<<"\t\t    _____ \n";
+  }
+}
+
+
+bool chkhm(struct node * p){
+  bool a=false;
+  while(p!=NULL){
+  if(p->data==95)
+  a=true;	
+  p=p->next;
+  }	
+  return a;
+}
+
+void findhm(){
+int tries=4;
+char ch;
+int a;
+bool kval;
+	
+while(tries>0){
+a=0;
+temp=head;
+temp2=head2;
+cout<<"\n\n\t\t   In the game of Hangman, the computer chooses a word at random from a given list of words. \n";
+cout<<"\t\t   This word is the answer. You have tries to guess the word, by guessing one letter at a time.\n";
+cout<<"\t\t   Whenever the user guesses a letter that is in the answer, all occurrences of that letter are revealed to you.\n";
+cout<<"\t\t   The game ends when the you have guessed every letter in the word, before you reach the allowed number of strikes\n\n";
+cout<<"\t\t   HINT : It's a FRUIT \n";
+cout<<"\t   -----------------------------------------------------------------------------------------------------------------------------\n";	
+cout<<"\n\n";
+cout<<"\t\t   Tries :  "<<tries;	
+cout<<"\n\n\t\t   Word  : ";
+printhm(head2);
+cout<<endl<<endl;
+drawhm(tries);
+cout<<endl<<endl;
+cout<<" \n\t\t   enter the letter : ";
+cin>>ch;
+system("cls");
+
+ while(temp!=NULL){
+	if(temp->data == ch){
+	temp2->data=ch;
+	a=1;
+	}
+	temp2=temp2->next;
+    temp=temp->next;
+ }
+ 
+ 
+ kval=chkhm(head2);
+ 
+ if(a==0)
+ tries--;
+ if(kval==false){
+ 	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	cout<<"\t\t\t\t\t\t\t\t\t   YOU WIN \n \t\t\t\t\t\t\t\t\t   Amazing :) \n\n";
+	cout<<"\t\t\t\t\t\t\t   The word was : " ;
+    printhm(head);	
+	break;
+ }
+ 
+  
+}
+if(tries==0){
+	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	cout<<"\t\t\t\t\t\t\t   GAME OVER \n \t\t\t\t\t\t\t   Better Luck Next Time :( \n\n";
+	cout<<"\t\t\t\t\t\t\t   The word was : " ;
+    printhm(head);	
+}
+
+}
+
+
+void HANGMAN(){	
+    
+    srand (time(0));
+	string wordList[10] = {"apple","peach","banana","strawberry","mango","watermelon","kiwi","dates","orange","coconut"};
+	string word;
+	word = wordList[rand()%10];
+	int wordLength = word.length();
+	char guess;
+	for(int i=0;i<wordLength;i++){
+		createhm(word[i]);
+		createBlankLL(95);
+	}
+	findhm();
+}
+
+
 int main()
 {
     Sleep(2500);
@@ -229,6 +381,7 @@ int main()
           cout<<"\t\t\t\t\t\t\t\t\t\t Hangman ";
           Sleep(900);
           system("CLS");
+          HANGMAN();
 
     break;
 
